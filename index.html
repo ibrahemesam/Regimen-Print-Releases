@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title style="font-weight: bold">Family Print</title>
+    <link rel="shortcut icon" href="asset/icon.png" sizes="all" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- already minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.4.5.2.css" />
+    <script src="js/ui_config.js"></script>
+    <!-- S CSS -->
+
+    <div id="CSS" hidden></div>
+    <script>
+      if (window.__debug__) {
+        document.getElementById(
+          "CSS"
+        ).innerHTML = `<link rel="stylesheet" href="css/autoComplete.css" />
+          <link rel="stylesheet" href="css/violla-scrript-ttf.css" />
+          <link rel="stylesheet" href="css/inp_search.css" />
+          <link rel="stylesheet" href="css/my.css" />
+          <link rel="stylesheet" href="css/main.css" />
+          <link rel="stylesheet" href="css/rtl.css" />`;
+      } else {
+        document.getElementById("CSS").innerHTML =
+          '<link rel="stylesheet" href="css/app.min.css" />';
+      }
+    </script>
+    <!-- E CSS -->
+    <!-- already minified JS -->
+    <script src="js/jquery.min.3.5.1.js"></script>
+    <script src="js/popper.min.1.16.0.js"></script>
+    <script src="js/bootstrap.min.4.5.2.js"></script>
+    <script src="js/darkreader.min.js"></script>
+    <script src="js/hotkeys.min.js"></script>
+    <script src="js/autoComplete.min.js"></script>
+    <script src="js/qrcode.min.js"></script>
+    <!-- <link rel="stylesheet/less" type="text/css" href="styles.less" /> -->
+    <script src="js/ws_port.js"></script>
+    <script type="text/javascript">
+      function onClose() {
+        // connection closed, discard old websocket and create a new one in 5s
+        ws = null;
+        // alert('ws closed');
+        function createElementFromHTML(htmlString) {
+          var div = document.createElement("div");
+          div.innerHTML = htmlString.trim();
+          return div.firstChild;
+        }
+        document.body.innerHTML = "";
+        function calcH1FontSize() {
+          return document.body.clientWidth * 0.25 + "px";
+        }
+        document.body.appendChild(
+          createElementFromHTML(`
+        <style>
+            .bg-gradient-green{
+            background: linear-gradient(0deg, rgba(178, 178, 178, 0.1) 0%, rgba(178, 178, 178, 0.1) 76%,rgba(46, 46, 46, 0.1) 76%, rgba(46, 46, 46, 0.1) 100%),linear-gradient(45deg, rgba(199, 199, 199, 0.04) 0%, rgba(199, 199, 199, 0.04) 24%,rgba(11, 11, 11, 0.04) 24%, rgba(11, 11, 11, 0.04) 100%),linear-gradient(135deg, rgba(82, 82, 82, 0.09) 0%, rgba(82, 82, 82, 0.09) 57%,rgba(108, 108, 108, 0.09) 57%, rgba(108, 108, 108, 0.09) 100%),linear-gradient(0deg, rgba(243, 243, 243, 0.09) 0%, rgba(243, 243, 243, 0.09) 23%,rgba(31, 31, 31, 0.09) 23%, rgba(31, 31, 31, 0.09) 100%),linear-gradient(45deg, rgba(153, 153, 153, 0.06) 0%, rgba(153, 153, 153, 0.06) 70%,rgba(233, 233, 233, 0.06) 70%, rgba(233, 233, 233, 0.06) 100%),linear-gradient(90deg, rgb(62, 230, 74),rgb(4, 224, 249));}
+        </style>
+        `)
+        );
+        document.body.appendChild(
+          createElementFromHTML(
+            `<div class="bg-gradient-green" style="vertical-align: middle;font-weight: bold;display:flex;justify-content: center;text-align: center;margin-top:0px;font-weight:500px;position:fixed;top:50%;left:50%;transform: translate(-50%, -50%);width:100%;height:100vh;"><h1 style="position:absolute;top:50%;left:50%;transform: translate(-50%, -50%); font-size:${calcH1FontSize()}; margin: 0px;" id="h1">app closed</h1></div>`
+          )
+        );
+        window.addEventListener("resize", () => {
+          document.getElementById("h1").style.fontSize = calcH1FontSize();
+        });
+      }
+      try {
+        if (window.XMLHttpRequest) {
+          // code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp = new XMLHttpRequest();
+        } else {
+          // code for IE6, IE5
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "asset/net", false);
+        xmlhttp.send();
+        xmlDoc = xmlhttp.responseText;
+      } catch {
+        onClose();
+      }
+      function getUrlVars() {
+        // Read a page's GET URL variables
+        //   and return them as an associative array.
+        var vars = [],
+          hash;
+        var hashes = window.location.href
+          .slice(window.location.href.indexOf("?") + 1)
+          .split("&");
+        for (var i = 0; i < hashes.length; i++) {
+          hash = hashes[i].split("=");
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+        }
+        return vars;
+      }
+      window.DarkReader = window.darkreader;
+      window.url_vars = getUrlVars();
+      // window.history.pushState("", "Title", "/"); //make url ""
+      DarkReader.setFetchMethod(window.fetch);
+      if (darkTheme === true) {
+        DarkReader.enable();
+      } else if (darkTheme === false) {
+        DarkReader.disable();
+      }
+    </script>
+  </head>
+  <body oncontextmenu="return false;">
+    <section id="html">
+      <section id="body">
+        <title-bar class="bg-dark">
+          <div class="title-label text-primary tcntr">Regimen Print</div>
+          <div
+            class="btn btn-danger pt-0 pb-0 title-bar-btns exit-btn"
+            id="exit-btn"
+          >
+            <span>x</span>
+          </div>
+          <div
+            class="btn btn-primary pt-0 pb-0 title-bar-btns max-btn"
+            id="max-btn"
+          >
+            <span>[ ]</span>
+          </div>
+          <div
+            class="btn btn-info pt-0 pb-0 title-bar-btns min-btn"
+            id="min-btn"
+          >
+            <span>_</span>
+          </div>
+        </title-bar>
+        <div
+          class="modal fade"
+          id="modal_master_password"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4
+                  class="modal-title text-weight-bold text-weight-bolder"
+                  style="padding-left: 80px; font-weight: bold"
+                >
+                  ~: App Master Password :~
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form>
+                  <div class="form-group d-flex">
+                    <div class="input-group mr-1" style="margin-bottom: 0px">
+                      <input
+                        type="password"
+                        class="form-control font-weight-bold"
+                        placeholder="Enter old password"
+                        id="inp_old_master_pass"
+                        name="inp_old_master_pass"
+                      />
+                    </div>
+                    <div class="input-group mr-1" style="margin-bottom: 0px">
+                      <input
+                        type="password"
+                        class="form-control font-weight-bold"
+                        placeholder="Enter new password"
+                        id="inp_master_pass"
+                        name="inp_master_pass"
+                        onCopy="return false"
+                        onDrag="return false"
+                        onDrop="return false"
+                        onPaste="return false"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div
+                      class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded"
+                      style="position: relative; max-height: 41px"
+                    >
+                      <label
+                        class="form-check-label font-weight-bold"
+                        style="position: relative; top: -1px"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="chk_app_master_password_show_password"
+                          onclick="if($('#chk_app_master_password_show_password').prop('checked')){$('#inp_master_pass')[0].setAttribute('type', 'text');}else{$('#inp_master_pass')[0].setAttribute('type', 'password');}"
+                        />Show
+                      </label>
+                    </div>
+                  </div>
+
+                  <div
+                    class="justify-content-center align-items-center pl-2 pr-1 pt-2 border border-danger rounded mb-1"
+                  >
+                    <h5 class="font-weight-bold text-center">
+                      !! Warning: No "Forgot my Password" !!
+                    </h5>
+                  </div>
+                  <div class="form-group d-flex mb-1">
+                    <input
+                      type="password"
+                      class="form-control font-weight-bold mr-1"
+                      placeholder="Confirm password"
+                      id="inp_master_pass_confirm_1"
+                      onCopy="return false"
+                      onDrag="return false"
+                      onDrop="return false"
+                      onPaste="return false"
+                      autocomplete="off"
+                    />
+                    <input
+                      type="password"
+                      class="form-control font-weight-bold"
+                      placeholder="Confirm again"
+                      id="inp_master_pass_confirm_2"
+                      onCopy="return false"
+                      onDrag="return false"
+                      onDrop="return false"
+                      onPaste="return false"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="form-group d-flex mb-0">
+                    <input
+                      type="password"
+                      class="form-control font-weight-bold mr-1"
+                      placeholder="Yet confirm again [:"
+                      id="inp_master_pass_confirm_3"
+                      onCopy="return false"
+                      onDrag="return false"
+                      onDrop="return false"
+                      onPaste="return false"
+                      autocomplete="off"
+                    />
+                    <button
+                      type="button"
+                      class="btn btn-primary mb-2 font-weight-bold mr-1"
+                      id="btn_clear_master_pass_inputs"
+                      name="btn_clear_master_pass_inputs"
+                    >
+                      Clear
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary mb-2 font-weight-bold"
+                      id="btn_set_master_pass"
+                      name="btn_set_master_pass"
+                    >
+                      Set
+                    </button>
+                  </div>
+                  <div class="mt-2 p-0" hidden>
+                    <div class="progress" id="progress_modal_add_new_client">
+                      <div
+                        class="progress-bar bg-primary progress-bar-striped progress-bar-animated w-100"
+                      >
+                        <h7 style="font-weight: bold"
+                          >Status: Waiting for input . . .</h7
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal_update_log"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title" id="title_update_log"></h4>
+                <data id="update-log-code-on-ok"></data>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body d-flex align-items-end flex-column">
+                <div
+                  class="p-0 m-0"
+                  style="overflow-y: auto; max-height: 200px"
+                >
+                  <pre
+                    id="p_update_log"
+                    style="font-weight: 400"
+                    class="text-md-right"
+                    dir="rtl"
+                  ></pre>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="eval($('#update-log-code-on-ok').attr('data')); $('#modal_update_log').modal('hide');"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal-whatsapp-login"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header" style="position: relative">
+                <h4 class="modal-title font-weight-bold cntr tcntr">
+                  ~: Whatsapp Login :~
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body d-flex align-items-end flex-column">
+                <div class="p-0 m-0" style="overflow-y: auto; width: 100%">
+                  <div class="wa-login-spinner-line">
+                    <div class="spinner-grow text-info"></div>
+                    <div class="spinner-grow text-muted"></div>
+                    <div class="spinner-grow text-primary"></div>
+                    <div class="spinner-grow text-success"></div>
+                    <div class="spinner-grow text-info"></div>
+                    <div class="spinner-grow text-warning"></div>
+                    <div class="spinner-grow text-danger"></div>
+                    <div class="spinner-grow text-secondary"></div>
+                    <div class="spinner-grow text-dark"></div>
+                    <div class="spinner-grow text-success"></div>
+                    <div class="spinner-grow text-info"></div>
+                  </div>
+                  <div class="whatsapp-qr">
+                    <div class="wa-logo-center cntr"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <!-- <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="eval($('#update-log-code-on-ok').attr('data')); $('#modal_update_log').modal('hide');"
+                >
+                  Ok
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal-whatsapp-send"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header" style="position: relative">
+                <h4 class="modal-title font-weight-bold cntr tcntr">
+                  ~: Whatsapp Send :~
+                </h4>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body d-flex align-items-end flex-column">
+                <div class="p-0 m-0" style="overflow-y: auto; width: 100%">
+                  <div class="wa-send-status">
+                    <pre class="font-weight-bold">~: Whatsapp Send :~</pre>
+                  </div>
+                  <div id="wa-send-spinner-line">
+                    <div class="wa-send-spinner-line">
+                      <div class="spinner-grow text-info"></div>
+                      <div class="spinner-grow text-muted"></div>
+                      <div class="spinner-grow text-primary"></div>
+                      <div class="spinner-grow text-success"></div>
+                      <div class="spinner-grow text-info"></div>
+                      <div class="spinner-grow text-warning"></div>
+                      <div class="spinner-grow text-danger"></div>
+                      <div class="spinner-grow text-secondary"></div>
+                      <div class="spinner-grow text-dark"></div>
+                      <div class="spinner-grow text-success"></div>
+                      <div class="spinner-grow text-info"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary close m-auto"
+                  data-dismiss="modal"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal-import-excel"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header" style="position: relative">
+                <h4 class="modal-title font-weight-bold cntr tcntr">
+                  ~: Import Excel :~
+                </h4>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body d-flex align-items-end flex-column">
+                <div class="p-0 m-0" style="overflow-y: auto; width: 100%">
+                  <div class="import-excel-status">
+                    <pre class="font-weight-bold"></pre>
+                  </div>
+                  <div id="import-excel-spinner-line">
+                    <div class="import-excel-spinner-line">
+                      <div class="spinner-grow text-info"></div>
+                      <div class="spinner-grow text-muted"></div>
+                      <div class="spinner-grow text-primary"></div>
+                      <div class="spinner-grow text-success"></div>
+                      <div class="spinner-grow text-info"></div>
+                      <div class="spinner-grow text-warning"></div>
+                      <div class="spinner-grow text-danger"></div>
+                      <div class="spinner-grow text-secondary"></div>
+                      <div class="spinner-grow text-dark"></div>
+                      <div class="spinner-grow text-success"></div>
+                      <div class="spinner-grow text-info"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary close m-auto"
+                  data-dismiss="modal"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal_update_log"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title" id="title_update_log"></h4>
+                <data id="update-log-code-on-ok"></data>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body d-flex align-items-end flex-column">
+                <div
+                  class="p-0 m-0"
+                  style="overflow-y: auto; max-height: 200px"
+                >
+                  <pre
+                    id="p_update_log"
+                    style="font-weight: 400"
+                    class="text-md-right"
+                    dir="rtl"
+                  ></pre>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="eval($('#update-log-code-on-ok').attr('data')); $('#modal_update_log').modal('hide');"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal_confirm"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title" id="title_modal_confirm"></h4>
+                <data id="confirm-on-accept"></data>
+                <data id="confirm-on-refuse"></data>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="eval($('#confirm-on-accept').attr('data')); $('#modal_confirm').modal('hide');"
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="eval($('#confirm-on-refuse').attr('data')); $('#modal_confirm').modal('hide');"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modal_update"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Updating App...</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div>
+                  <span
+                    class="badge badge-secondary"
+                    style="float: left"
+                    id="lab_update_progress_msg"
+                  ></span>
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-striped progress-bar-animated"
+                      style="width: 40%"
+                      id="progress_update"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Nav tabs -->
+        <!-- <div class="nav-bar-before"></div> -->
+        <ul
+          class="nav nav-tabs justify-content-center nav-bar"
+          ondragstart="return false;"
+          ondrop="return false;"
+        >
+          <li class="nav-item bg-lightgrey">
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab-main"
+              hidden
+            ></a>
+            <a
+              class="nav-link font-weight-bold text-center"
+              onclick="this.parentNode.children[0].click();"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              data-translate="main"
+            ></a>
+          </li>
+          <li class="nav-item" hidden>
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab_client"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              >Patient</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab-items"
+              hidden
+            ></a>
+            <a
+              class="nav-link font-weight-bold text-center"
+              onclick="this.parentNode.children[0].click();"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              data-translate="items"
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab-settings"
+              hidden
+            ></a>
+            <a
+              class="nav-link font-weight-bold text-center"
+              onclick="this.parentNode.children[0].click();"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              data-translate="settings"
+            ></a>
+          </li>
+          <li class="nav-item" hidden>
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab_profile"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              >Profile</a
+            >
+          </li>
+          <li class="nav-item" hidden>
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab_faq"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              >FAQ</a
+            >
+          </li>
+          <li class="nav-item" hidden>
+            <a
+              class="nav-link font-weight-bold text-center"
+              data-toggle="tab"
+              href="#tab_about"
+              name="nav_btn"
+              onmousedown="return false;"
+              onmouseup="return false;"
+              >About</a
+            >
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div
+          class="tab-content p-1"
+          id="tab-content"
+          style="height: inherit; border-radius: inherit"
+        >
+          <div
+            class="tab-pane active container text-center mt-md-2 h-100 container"
+            id="tab-main"
+            style="border-radius: 10px; min-width: 95%"
+          >
+            <div class="row h-100 justify-content-center align-items-center">
+              <div class="m-0 p-0">
+                <!-- BEGAIN BODY -->
+                <!-- S Main Buttons -->
+                <div class="d-flex p-0 m-0 mb-1">
+                  <button
+                    class="btn btn-success cstr csbr"
+                    data-toggle="toggle"
+                    data-target="#collapse-whatsapp-send"
+                  ></button>
+                  <div class="p-0 m-0" id="collapse-whatsapp-send">
+                    <div style="display: flex" class="p-0 m-0 col">
+                      <div
+                        class="btn btn-primary rounded w-20 cs"
+                        type="button"
+                        name="btn-whatsapp-send"
+                      ></div>
+                      <input
+                        class="form-control font-weight-bold w-80 tcntr cs"
+                        placeholder="+20"
+                        data-input="whatsapp-send-number"
+                        type="number"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-success border border-success w-100 font-weight-bold w-50 cs"
+                    data-translate="print"
+                    name="print-items-btn"
+                  ></button>
+                  <button
+                    class="btn btn-primary h-100 w-100 cs btn-add-drug"
+                    name="btn_add_new_rx"
+                  >
+                    .
+                    <!-- <img src="asset/add.svg" height="30px" /> -->
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger border w-100 font-weight-bold w-50 cstl csbl"
+                    style="border-color: crimson"
+                    name="btn_clear_drugs"
+                    data-translate="clear-items"
+                  ></button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary border w-100 font-weight-bold w-50 cstl csbl"
+                    style="
+                      background-color: darkmagenta;
+                      border-color: violet;
+                      display: none;
+                    "
+                    data-dismiss="modal"
+                  >
+                    Cancel Printing
+                  </button>
+                </div>
+                <!-- E Main Buttons -->
+                <div class="rxs border border-info rounded mb-1 p-1">
+                  <div
+                    class="rx border border-secondary rounded p-1"
+                    num="1"
+                    data-block-type="rx"
+                  >
+                    <div class="form-group d-flex mb-2">
+                      <button
+                        class="mr-1 btn btn-danger p-1 btn-delete-drug"
+                        name="btn_delete_drug"
+                      ></button>
+                      <div
+                        class="justify-content-center align-items-center border border-info rounded mr-1"
+                        style="
+                          position: relative;
+                          max-height: 41px;
+                          width: 80px;
+                        "
+                      >
+                        <div class="font-weight-bold cntr">
+                          R<sub>x</sub
+                          ><small class="font-weight-bold">(1)</small>:
+                        </div>
+                      </div>
+                      <div
+                        data-input="item-name"
+                        class="col-md p-0 rx-drug ui-widget autoComplete_wrapper"
+                      >
+                        <input
+                          class="form-control font-weight-bold col-12 w-100"
+                          type="text"
+                          data-translate-placeholder="item-name"
+                          id="input-item-name"
+                          type="search"
+                          dir="auto"
+                          spellcheck="false"
+                          autocorrect="off"
+                          autocomplete="on"
+                          autocapitalize="off"
+                        />
+                      </div>
+                      <input
+                        class="form-control font-weight-bold col-12 w-100 tcntr"
+                        type="number"
+                        min="0"
+                        data-translate-placeholder="barcode"
+                        data-input="barcode"
+                        style="max-width: 30%; min-width: 20%"
+                      />
+                    </div>
+                    <div
+                      class="form-group d-flex mb-2 rtl-regimen-label"
+                      id="regimen-block"
+                    >
+                      <div
+                        class="justify-content-center align-items-center border border-info rounded mr-1 rtl-regimen-label"
+                        style="
+                          position: relative;
+                          max-height: 41px;
+                          width: 100px;
+                        "
+                      >
+                        <div
+                          class="font-weight-bold cntr"
+                          style="font-size: medium"
+                          data-translate="Regimen:"
+                        ></div>
+                      </div>
+                      <div
+                        style="position: relative; *z-index: 1"
+                        class="col-md p-0 rx-regimen regimen rtl-regimen"
+                      >
+                        <div
+                          class="alert alert-info font-weight-bold border border-success font-weight-bold h-100 pr-5"
+                          style="display: flex; flex-flow: column nowrap"
+                        >
+                          <span class="cntr" data-translate="use"></span>
+                        </div>
+                        <input
+                          type="number"
+                          data-input="regimen-use"
+                          class="form-control font-weight-bold"
+                          placeholder="#"
+                          style="text-align: center; height: 100%"
+                          min="1"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary dropdown-toggle font-weight-bold"
+                            data-toggle="dropdown"
+                            name="regimen-use-type-dropdown"
+                            aria-expanded="false"
+                            data-translate="tablet"
+                          ></button>
+                          <div class="dropdown-menu">
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="tablet"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="capsule"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="teaspoonful"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="tablespoonful"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="coffecupful"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dregimen-ropdown-item"
+                              data-translate="mL"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="cL"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="ampule"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="vial"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="swap"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="regimen-dropdown-item"
+                              data-translate="spray"
+                            ></a>
+                          </div>
+                        </div>
+                        <div
+                          class="alert macro-item alert-info font-weight-bold tcntr border border-success font-weight-bold h-100 pr-4"
+                        >
+                          <span class="cntr" data-translate="per"></span>
+                        </div>
+                        <input
+                          type="number"
+                          data-input="regimen-per"
+                          class="form-control font-weight-bold"
+                          placeholder="#"
+                          style="text-align: center; height: 100%"
+                          min="1"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary dropdown-toggle font-weight-bold"
+                            data-toggle="dropdown"
+                            name="regimen-per-type-dropdown"
+                            aria-expanded="false"
+                            data-translate="hour"
+                          ></button>
+                          <div class="dropdown-menu">
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="minute"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="hour"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="day"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="week"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="month"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item"
+                              data-translate="year"
+                            ></a>
+                          </div>
+                        </div>
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          name="btn-toggle-collapse-food"
+                        >
+                          🍔
+                        </button>
+                        <div
+                          class="food-collapse btn-group-vertical btn-group-toggle h-100 p-0 m-0"
+                          data-toggle="buttons"
+                          data-block-type="collapse-food"
+                        >
+                          <label
+                            class="btn btn-secondary btn-sm p-0 border border-primary"
+                            style="min-width: max-content"
+                            data-input="before-food"
+                          >
+                            <input type="radio" autocomplete="off" />
+                            <span data-translate="before food"></span>
+                          </label>
+                          <label
+                            class="btn btn-secondary btn-sm p-0 border border-primary"
+                            style="min-width: max-content"
+                            data-input="after-food"
+                          >
+                            <input type="radio" autocomplete="off" />
+                            <span data-translate="after food"></span>
+                          </label>
+                        </div>
+                        <!-- S Regimen For -->
+                        <!-- S For type -->
+                        <div class="input-group-append">
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary dropdown-toggle font-weight-bold regimen-for-type-toggle"
+                            data-toggle="dropdown"
+                            name="drop-regimen-for-type"
+                            data-regimen-for-type="none"
+                            aria-expanded="false"
+                          ></button>
+                          <div class="dropdown-menu">
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item-regimen-for-type"
+                              data-translate="none"
+                              data-regimen-for-type="none"
+                              >.</a
+                            >
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item-regimen-for-type"
+                              data-translate="for # period"
+                              data-regimen-for-type="period"
+                            ></a>
+                            <a
+                              class="dropdown-item font-weight-bold"
+                              name="dropdown-item-regimen-for-type"
+                              data-translate="for lifetime"
+                              data-regimen-for-type="lifetime"
+                            ></a>
+                          </div>
+                        </div>
+                        <!-- E For type -->
+                        <div
+                          class="p-0 m-0 regimen-for rtl-regimen-for"
+                          data-block-type="regimen-for-period"
+                        >
+                          <div
+                            class="alert macro-item alert-info font-weight-bold tcntr border border-success font-weight-bold h-100 pr-4"
+                          >
+                            <span class="cntr" data-translate="for"></span>
+                          </div>
+                          <input
+                            type="number"
+                            data-input="regimen-for-period-num"
+                            class="form-control font-weight-bold"
+                            placeholder="#"
+                            style="text-align: center; height: 100%"
+                            min="1"
+                          />
+                          <div class="input-group-append">
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary dropdown-toggle font-weight-bold"
+                              data-toggle="dropdown"
+                              name="regimen-for-period-type-dropdown"
+                              aria-expanded="false"
+                              data-translate="day"
+                            ></button>
+                            <div class="dropdown-menu">
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="minute"
+                              ></a>
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="hour"
+                              ></a>
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="day"
+                              ></a>
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="week"
+                              ></a>
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="month"
+                              ></a>
+                              <a
+                                class="dropdown-item font-weight-bold"
+                                name="regimen-dropdown-item"
+                                data-translate="year"
+                              ></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="p-0 m-0 regimen-for rtl-regimen-for"
+                          data-block-type="regimen-for-lifetime"
+                        >
+                          <div
+                            class="alert macro-item alert-info font-weight-bold tcntr border border-success font-weight-bold h-100 pr-4"
+                          >
+                            <span
+                              class="cntr"
+                              data-translate="for lifetime"
+                              style="width: max-content"
+                            ></span>
+                          </div>
+                        </div>
+                        <!-- E Regimen For -->
+                      </div>
+                    </div>
+                    <div class="form-group mb-1 w-100">
+                      <textarea
+                        dir="auto"
+                        data-input="extra-data"
+                        data-translate-placeholder="extra-data"
+                        class="form-control"
+                        rows="3"
+                        style="
+                          max-height: 77px;
+                          overflow-y: auto;
+                          min-height: 45px;
+                          height: 45px;
+                        "
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2 p-0" hidden>
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                    >
+                      <h7 style="font-weight: bold"></h7>
+                    </div>
+                  </div>
+                </div>
+                <!-- END BODY -->
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane border border-primary pt-1 pb-1 pr-1 bg-gradient-green"
+            id="tab_client"
+            width="100%"
+            style="border-radius: inherit; height: calc(100% - 58px)"
+          >
+            <div class="p-0 m-0 d-flex flex-row mr-1 h-100">
+              <div
+                id="blocker_tab_client"
+                hidden
+                class="border-success bg-gradient-green"
+                style="
+                  border-radius: 5px;
+                  position: absolute;
+                  left: 20px;
+                  right: 20px;
+                  height: calc(100% - 75px);
+                  top: 62px;
+                  z-index: 1000;
+                "
+              >
+                <div
+                  class="row h-100 justify-content-center align-items-center"
+                >
+                  <div class="m-0 p-0">
+                    <h1>*~:هذا القسم خاص ببيانات العميل:~*</h1>
+                    <div
+                      class="row h-100 justify-content-center align-items-center"
+                    >
+                      <div class="m-0 p-0">
+                        <h2>Clients يرجى اختيار العميل من تبويب</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                //dbg: hide blocker_tab_client
+                (() => {
+                  $("#blocker_tab_client").attr("hidden", "true");
+                  var _e = $("#tab_client");
+                  _e.attr(
+                    "class",
+                    _e.attr("class").replace("bg-gradient-green", "")
+                  );
+                })();
+              </script>
+              <div
+                class="p-2 m-0 ml-1 border border-info col-6 col-md rounded d-flex col-12"
+              >
+                <div
+                  class="border border-success col-md mr-1 rounded"
+                  style="border-color: darkgreen !important"
+                >
+                  <div
+                    class="row h-100 client-rxs justify-content-center align-items-center"
+                    style="padding: 6px; overflow-y: auto"
+                  >
+                    <!-- <div class="m-0 p-0 pt-1"> -->
+                    <!--
+                              <div>
+                                  <input class="form-check-input" type="checkbox" style="float: right" id="chk-braves" name="bot-chk" db="bot[braves]" checked>
+                                  <h6 class="font-weight-bold text-center" id="lab-braves" onclick="$('#chk-braves')[0].click();">دخول معارك الشجعان</h6>
+                              </div>
+                              -->
+                    <div
+                      class="p-0"
+                      style="margin: 6px; width: 150px; height: 200px"
+                    >
+                      <button
+                        class="btn btn-success h-100 w-100"
+                        name="btn_add_new_client_rx"
+                      >
+                        <img
+                          src="asset/add.svg"
+                          height="30px"
+                          name="btn_add_new_client_rx"
+                        />
+                        <b
+                          name="btn_add_new_client_rx"
+                          style="font-size: x-large"
+                        >
+                          <strong name="btn_add_new_client_rx" class="violla"
+                            >R</strong
+                          ><sub name="btn_add_new_client_rx" class="violla"
+                            >x</sub
+                          ></b
+                        >
+                      </button>
+                    </div>
+                    <button
+                      id="client_rx_preview_template"
+                      name="client_rx_preview"
+                      class="btn btn-primary rounded border border-secondary"
+                      style="height: 200px; width: 150px"
+                      hidden
+                    >
+                      <div class="mb-5 mt-4" name="client_rx_preview">
+                        <h1 info="code" class="tcntr" name="client_rx_preview">
+                          1122
+                        </h1>
+                        <h5
+                          info="date"
+                          class="tcntr mt-2"
+                          name="client_rx_preview"
+                        >
+                          22-10-2020
+                        </h5>
+                        <h6
+                          info="time"
+                          class="tcntr mt-2"
+                          name="client_rx_preview"
+                        >
+                          12:50:20
+                        </h6>
+                      </div>
+                    </button>
+
+                    <!-- </div> -->
+                  </div>
+                </div>
+                <div
+                  class="border border-success col-4 rounded"
+                  style="border-color: purple !important; min-width: 165px"
+                >
+                  <div
+                    class="row h-100 justify-content-center align-items-center"
+                  >
+                    <div class="m-0 p-1">
+                      <form>
+                        <div
+                          class="justify-content-center align-items-center pl-2 pr-1 pt-2 border border-info rounded mb-1"
+                        >
+                          <h6 class="font-weight-bold text-center">
+                            ~: اسم العميل :~
+                          </h6>
+                        </div>
+                        <div class="form-group mb-1">
+                          <div class="input-group mb-1">
+                            <input
+                              id="inp_client_name"
+                              type="text"
+                              class="form-control font-weight-bold tcntr"
+                              placeholder="اسم العميل"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="form-group d-flex mb-1">
+                          <input
+                            id="inp_client_code"
+                            class="form-control font-weight-bold tcntr"
+                            placeholder="الكود"
+                            disabled=""
+                          />
+                          <div
+                            class="justify-content-center align-items-center border border-info rounded ml-1 col-5"
+                            style="position: relative; max-height: 41px"
+                          >
+                            <label
+                              class="form-check-label font-weight-bold cntr"
+                              >:الكود</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="form-group d-flex mb-1">
+                          <!-- <div class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded mr-1" style="position:relative;  max-height: 50px; width:80px;">
+                                <label class="form-check-label font-weight-bold cntr">Gendre:</label>
+                              </div> -->
+                          <div
+                            class="card mb-1 col-2 col-md p-0 justify-content-center align-items-center col-12"
+                          >
+                            <div
+                              class="card-body p-0 mt-2 d-flex"
+                              style="position: relative; width: 100%"
+                            >
+                              <label
+                                class="radio-inline font-weight-bold tcntr w-50"
+                                ><input
+                                  id="inp_client_gendre_male"
+                                  type="radio"
+                                  name="optradio"
+                                />ذكر</label
+                              >
+                              <label
+                                class="radio-inline font-weight-bold tcntr w-50"
+                                ><input
+                                  id="inp_client_gendre_female"
+                                  type="radio"
+                                  name="optradio"
+                                />أنثى</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group d-flex mb-1">
+                          <input
+                            id="inp_client_age"
+                            type="number"
+                            class="form-control font-weight-bold tcntr"
+                            placeholder="العمر"
+                          />
+                          <div
+                            class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded ml-1"
+                            style="
+                              position: relative;
+                              max-height: 41px;
+                              width: 110px;
+                            "
+                          >
+                            <label
+                              class="form-check-label font-weight-bold cntr"
+                              >:العمر</label
+                            >
+                          </div>
+                        </div>
+
+                        <div
+                          class="justify-content-center align-items-center pl-2 pr-1 pt-2 border border-info rounded mb-1"
+                        >
+                          <h6 class="font-weight-bold text-center">
+                            ~: رقم الهاتف :~
+                          </h6>
+                        </div>
+                        <div class="form-group mb-1">
+                          <div class="input-group mb-1">
+                            <input
+                              id="inp_client_phone"
+                              class="form-control font-weight-bold tcntr"
+                              placeholder="رقم الهاتف"
+                            />
+                          </div>
+                        </div>
+
+                        <div
+                          class="justify-content-center align-items-center pl-2 pr-1 pt-2 border border-info rounded mb-1"
+                        >
+                          <h6 class="font-weight-bold text-center">
+                            ~: معلومات إضافية :~
+                          </h6>
+                        </div>
+                        <div class="form-group mb-1">
+                          <textarea
+                            dir="auto"
+                            id="inp_client_extra"
+                            class="form-control"
+                            placeholder="معلومات إضافية"
+                            rows="3"
+                            style="
+                              max-height: 60px;
+                              overflow-y: auto;
+                              min-height: 60px;
+                            "
+                          ></textarea>
+                        </div>
+                        <div class="d-flex p-0 m-0">
+                          <button
+                            type="button"
+                            class="btn btn-primary border border-success w-100 font-weight-bold w-50 cstr csbr"
+                          >
+                            Save
+                          </button>
+                          <button
+                            type="button"
+                            name="btn_close_client"
+                            class="btn btn-danger border border-success w-100 font-weight-bold w-50 cs"
+                          >
+                            Close
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-primary border border-success w-100 font-weight-bold w-50 cstl csbl"
+                          >
+                            Reset
+                          </button>
+                        </div>
+
+                        <div class="progress mt-0" hidden>
+                          <div
+                            class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="width: 100%"
+                          >
+                            <h7 style="font-weight: bold">Please wait...</h7>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane container text-center mt-md-2 h-100"
+            id="tab-settings"
+          >
+            <div
+              class="row h-100 justify-content-center align-items-center m-0 p-0"
+            >
+              <div class="m-0 p-0 cntr">
+                <!--begain-->
+                <!-- <p class="mt-2"></p> -->
+                <!-- S Selecting Printer -->
+                <div
+                  class="row justify-content-center align-items-center p-0 m-0"
+                >
+                  <div class="d-flex printer-container rtl-printer-container">
+                    <div
+                      class="btn btn-primary font-weight-bold"
+                      data-translate="Select Printer:"
+                      style="cursor: default"
+                    ></div>
+                    <div class="input-group-append" name="printers-dropdown">
+                      <button
+                        type="button"
+                        class="btn bg-lightgrey dropdown-toggle font-weight-bold"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                        data-translate="no-printer"
+                      ></button>
+                      <div class="dropdown-menu">
+                        <!-- <a
+                          class="dropdown-item font-weight-bold"
+                          name="dropdown-item"
+                          >menu-item</a
+                        > -->
+                      </div>
+                    </div>
+                    <!-- <button
+                      class="btn btn-success"
+                      style="
+                        background-image: url('./asset/refresh.svg');
+                        background-repeat: no-repeat;
+                        background-size: 40px;
+                        width: 40px;
+                        background-position: center center;
+                      "
+                      name="printers-refresh-btn"
+                    ></button> -->
+                  </div>
+                </div>
+                <!-- E Selecting Printer -->
+                <div
+                  class="row justify-content-center align-items-center mb-3 pt-2 border border-primary rounded"
+                  hidden
+                >
+                  <div
+                    class="custom-control custom-switch custom-switch-md mb-3"
+                  >
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="toggle_run_on_startup"
+                      name="toggle_run_on_startup"
+                      checked
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="toggle_run_on_startup"
+                    ></label>
+                  </div>
+                  <label
+                    class="font-weight-bold"
+                    onclick="this.parentNode.children[0].children[0].click();"
+                    >Run on Startup</label
+                  >
+                </div>
+                <button
+                  class="btn btn-primary font-weight-bold"
+                  name="btn_app_master_password"
+                  hidden
+                >
+                  App Master Password
+                </button>
+                <hr />
+                <!-- S Selecting Logo -->
+                <div
+                  class="row justify-content-center align-items-center p-0 m-0 d-block"
+                >
+                  <img
+                    src="asset/logo-default.svg"
+                    style="max-height: 200px"
+                    id="logo-img"
+                    class="border border-2 border-primary rounded border-0 mr-1"
+                  />
+                  <input
+                    type="file"
+                    hidden
+                    id="logo-img-file"
+                    accept="image/png, image/jpeg"
+                  />
+                  <button
+                    class="btn btn-info"
+                    style="border: dashed; border-color: violet"
+                    data-translate="select-logo-img"
+                    onclick="$('#logo-img-file')[0].click();"
+                  ></button>
+                </div>
+                <!-- E Selecting Logo -->
+                <!-- S Login WhatsApp -->
+                <div id="whatsapp-login-section">
+                  <hr />
+                  <button
+                    type="button"
+                    class="btn btn-success btn-lg m-0 p-0 font-weight-bold"
+                    name="btn-whatsapp-login"
+                  >
+                    <span
+                      class="font-weight-bold"
+                      data-translate="whatsapp-login"
+                      onclick="this.parentNode.click();"
+                    ></span>
+                  </button>
+                </div>
+                <!-- E Login WhatsApp -->
+                <hr hidden />
+                <!-- S regimen-block -->
+                <div hidden id="regimen-block-edit">
+                  <script>
+                    // document.getElementById("regimen-block-edit").outerHTML =
+                    //   document
+                    //     .getElementById("regimen-block")
+                    //     .outerHTML.replaceAll("drop_", "edit_drop_")
+                    //     .replaceAll(
+                    //       "data-regimen-for-type=",
+                    //       "data-edit-regimen-for-type="
+                    //     );
+                  </script>
+                </div>
+                <!-- E regimen-block -->
+                <hr />
+                <!-- S Dark Theme switch -->
+                <div
+                  class="row justify-content-center align-items-center m-0 p-0"
+                >
+                  <div
+                    class="mt-1 row justify-content-center align-items-center mb-0 pt-2 border border-primary rounded pr-2 pl-2"
+                    style="max-width: fit-content"
+                  >
+                    <div
+                      class="custom-control custom-switch custom-switch-md mb-2"
+                    >
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="toggle_theme"
+                        name="toggle_theme"
+                      />
+                      <script>
+                        document.getElementById("toggle_theme").checked = true;
+                      </script>
+                      <label
+                        class="custom-control-label"
+                        for="toggle_theme"
+                      ></label>
+                    </div>
+                    <label
+                      class="font-weight-bold"
+                      onclick="this.parentNode.children[0].children[0].click();"
+                      data-translate="ui-dark-theme"
+                    ></label>
+                  </div>
+                </div>
+                <!-- E Dark Theme switch -->
+                <hr />
+                <!-- S Arabic UI switch -->
+                <div
+                  hidden
+                  class="row justify-content-center align-items-center m-0 p-0"
+                >
+                  <div
+                    class="mt-1 row justify-content-center align-items-center mb-0 pt-2 border border-primary rounded pr-2 pl-2"
+                    style="max-width: fit-content"
+                  >
+                    <div class="custom-control custom-switch custom-switch-md">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="toggle_arabic_ui"
+                        name="toggle_arabic_ui"
+                      />
+                      <script>
+                        document.getElementById(
+                          "toggle_arabic_ui"
+                        ).checked = true;
+                      </script>
+                      <label
+                        class="custom-control-label"
+                        for="toggle_arabic_ui"
+                      ></label>
+                    </div>
+                    <label
+                      class="font-weight-bold"
+                      onclick="this.parentNode.children[0].children[0].click();"
+                      data-translate="ui-arabic"
+                    ></label>
+                  </div>
+                </div>
+                <!-- E Arabic UI switch -->
+                <hr hidden />
+                <!-- outro -->
+                <strong class="border border-success rounded p-2">
+                  made with ❤️ by ibrahem
+                </strong>
+                <!--  -->
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane container text-center mt-md-2 h-100"
+            id="tab-items"
+          >
+            <div
+              class="row h-100 justify-content-center align-items-center m-0 p-0"
+            >
+              <div class="m-0 p-0 cntr" style="width: 90%">
+                <!-- S Import Excel -->
+                <div id="import-excel-section">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-lg m-0 p-0 font-weight-bold"
+                    name="btn-import-excel"
+                    data-translate="import-excel"
+                  ></button>
+                </div>
+                <!-- E Import Excel -->
+                <hr />
+                <div class="d-flex" id="tab-items-item">
+                  <button
+                    class="mr-1 btn btn-danger p-1"
+                    name="tab-items-btn-clear-item"
+                  ></button>
+                  <div
+                    data-input="item-name"
+                    class="col-md p-0 rx-drug ui-widget autoComplete_wrapper"
+                  >
+                    <input
+                      class="form-control font-weight-bold col-12 w-100 tcntr"
+                      type="text"
+                      data-translate-placeholder="item-name"
+                      id="input-item-name"
+                      type="search"
+                      dir="auto"
+                      spellcheck="false"
+                      autocorrect="off"
+                      autocomplete="on"
+                      autocapitalize="off"
+                    />
+                  </div>
+                  <input
+                    class="form-control font-weight-bold col-4 w-100 tcntr"
+                    type="number"
+                    min="0"
+                    data-input="barcode"
+                    data-translate-placeholder="barcode"
+                  />
+                </div>
+                <div class="btn-group w-100 mt-2" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    data-translate="add-item"
+                    name="tab-items-btn-add-item"
+                  ></button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-translate="edit-item"
+                    name="tab-items-btn-edit-item"
+                  ></button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-translate="delete-item"
+                    name="tab-items-btn-delete-item"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane container text-center mt-md-2 h-100"
+            id="tab_profile"
+          >
+            <div class="row h-100 justify-content-center align-items-center">
+              <div class="m-0 p-0">
+                <!--begain-->
+                <form>
+                  <div
+                    class="justify-content-center align-items-center pl-2 pr-1 pt-2 border border-info rounded mb-1"
+                  >
+                    <h6 class="font-weight-bold text-center">
+                      ~: Doctor Data :~
+                    </h6>
+                  </div>
+                  <div class="form-group d-flex mb-2">
+                    <div
+                      class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded mr-2"
+                      style="position: relative; max-height: 41px; width: 115px"
+                    >
+                      <label class="form-check-label font-weight-bold cntr"
+                        >Name:</label
+                      >
+                    </div>
+                    <input
+                      dir="auto"
+                      id="inp_doctor_name"
+                      spellcheck="false"
+                      class="form-control font-weight-bold"
+                      placeholder="اسم الطبيب"
+                      style="text-align: center"
+                    />
+                  </div>
+                  <div class="form-group d-flex mb-2">
+                    <div
+                      class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded mr-2"
+                      style="position: relative; max-height: 41px; width: 115px"
+                    >
+                      <label class="form-check-label font-weight-bold cntr"
+                        >Clinic:</label
+                      >
+                    </div>
+                    <input
+                      dir="auto"
+                      id="inp_doctor_clinic"
+                      spellcheck="false"
+                      class="form-control font-weight-bold"
+                      placeholder="اسم المستشفى او المركز الطبي او العيادة"
+                      style="text-align: center"
+                    />
+                  </div>
+                  <div class="form-group d-flex mb-2">
+                    <div
+                      class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded mr-2"
+                      style="position: relative; max-height: 41px; width: 115px"
+                    >
+                      <label class="form-check-label font-weight-bold cntr"
+                        >Phone:</label
+                      >
+                    </div>
+                    <input
+                      dir="auto"
+                      id="inp_doctor_phone"
+                      spellcheck="false"
+                      class="form-control font-weight-bold"
+                      placeholder="رقم الهاتف"
+                      style="text-align: center"
+                    />
+                  </div>
+                  <div class="form-group d-flex mb-2">
+                    <div
+                      class="justify-content-center align-items-center pl-4 pr-1 pt-2 border border-info rounded mr-2"
+                      style="position: relative; max-height: auto; width: 115px"
+                    >
+                      <label class="form-check-label font-weight-bold cntr"
+                        >Address:</label
+                      >
+                    </div>
+                    <textarea
+                      dir="auto"
+                      spellcheck="false"
+                      id="inp_doctor_address"
+                      class="form-control font-weight-bold"
+                      placeholder="عنوان العيادة"
+                      style="
+                        text-align: center;
+                        min-height: 50px;
+                        height: 50px;
+                        max-height: 100px;
+                      "
+                    ></textarea>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary font-weight-bold border border-success w-100"
+                    name="btn_save_doctor_data"
+                  >
+                    Save
+                  </button>
+                  <div class="mt-2 p-0" hidden>
+                    <div class="progress" id="progress_doctor_data">
+                      <div
+                        class="progress-bar progress-bar-striped progress-bar-animated"
+                        style="width: 100%"
+                      >
+                        <h7 style="font-weight: bold">Please wait...</h7>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!--end-->
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane container text-center mt-md-2 h-100"
+            id="tab_about"
+          >
+            <div class="row h-100 justify-content-center align-items-center">
+              <div class="m-0 p-0">
+                <!--begain-->
+                <h4 class="text-info">
+                  -:Legend Online Arabic Master Client:-
+                </h4>
+                <!-- <img src="asset/author.jpeg" height="200px" class="rounded mb-2"/><br> -->
+                <h6 class="text-info">-:Author: Dr. Ibrahem Essam:-</h6>
+                <button
+                  class="btn btn-primary"
+                  onclick="window.jsHelper.exec(`webbrowser.open('https://www.facebook.com/Auto.Legend.Online.Arabic/', new=2)`)"
+                >
+                  <img src="asset/FB.svg" height="30" />
+                </button>
+                <button
+                  class="btn btn-primary"
+                  onclick="window.jsHelper.exec(`g.bh.js_view_updates_log()`)"
+                >
+                  Updates Log
+                </button>
+                <!--end-->
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane border border-success p-1"
+            id="tab_faq"
+            width="100%"
+            height="100%"
+            style="height: inherit; border-radius: inherit"
+          >
+            <div class="p-0 m-0 d-flex flex-row" style="height: 100%">
+              <div class="btn-group-vertical">
+                <!--button type="button" class="btn btn-primary" onclick="viewTutVideo('FB');">FB</button>
+                <button type="button" class="btn btn-primary" onclick="viewTutVideo(1);">طحالب</button-->
+                <button
+                  type="button"
+                  class="btn btn-primary font-weight-bold"
+                  onclick="viewTutVideo(1);"
+                >
+                  1
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary font-weight-bold"
+                  onclick="viewTutVideo(2);"
+                >
+                  2
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary font-weight-bold"
+                  onclick="viewTutVideo(3);"
+                >
+                  3
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary font-weight-bold"
+                  onclick="viewTutVideo(4);"
+                >
+                  4
+                </button>
+              </div>
+              <div
+                class="p-0 m-0 ml-1 border border-primary col-12 col-md rounded"
+              >
+                <!-- <iframe id="faq_video" src="Author.html" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="FAQ video" class="w-100 h-100" style="" height="100vh" frameborder="0"></iframe> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- S lootie -->
+        <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player
+      src="https://assets2.lottiefiles.com/private_files/lf30_4dfb546p.json"
+      background="transparent"
+      speed="1"
+      style="width: 300px; height: 300px"
+      loop
+      autoplay
+      hidden
+    ></lottie-player> -->
+        <!-- E lootie -->
+        <!-- <iframe id="iframe_print_rx" src="rx.html" onload="window.rx_preview_template = iframe_print_rx.document.body.innerHTML;" hidden></iframe> -->
+      </section>
+    </section>
+
+    <!-- <script src="js/ws.js"></script> -->
+    <!-- <script src="js/typeahead.bundle.min.js"></script> -->
+    <!-- <script src="js/inp_search.js"></script> -->
+    <!-- S JS -->
+    <div id="JS" hidden></div>
+    <script src="js/app.js"></script>
+    <!-- E JS -->
+  </body>
+</html>
