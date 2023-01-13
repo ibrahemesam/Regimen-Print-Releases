@@ -55,8 +55,8 @@
             <h1 class="p-2 font-size-larger font-weight-bold mb-0" style="text-align: center;">Regimen Print</h1>
           </div>
         <h1 class="border border-info rounded p-2 font-size-larger" style="text-align: center;">البرنامج يتطلب تفعيل</h1>
-        <div class="d-flex border border-success rounded p-2 font-size-larger align-items-center justify-content-center" style="width:max-content; width: 100%;">
-          <h2 class="border border-info rounded p-2 font-size-larger mb-0" style="text-align: center;" id="code"><script> document.querySelector('#code').innerHTML = `${window.serial} :كود التفعيل`</script></h2>
+        <div class="d-flex border border-success rounded p-2 font-size-larger align-items-center justify-content-center" style="width:max-content; width: 100%; max-width: 80vw">
+          <h2 class="border border-info rounded p-2 font-size-larger mb-0" style="text-align: center; max-width: 80%; user-select: none; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" id="code"><script> document.querySelector('#code').innerHTML = `${window.serial} :كود التفعيل`</script></h2>
           <button
           class="btn btn-primary font-weight-bold font-size-large ml-2"
           onclick="navigator.clipboard.writeText(window.serial); alert('copied')"
